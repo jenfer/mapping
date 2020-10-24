@@ -15,7 +15,7 @@ Elevation: %s
 """
 
 
-map = folium.Map(location=[38.58, -99.09], zoom_start=6, tiles = "Stamen Terrain")
+map = folium.Map(location=[48.7767982, -121.8109970], zoom_start=6, tiles = "Stamen Terrain")
 
 fg = folium.FeatureGroup(name="Volcanoes")
 

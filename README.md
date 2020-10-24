@@ -19,3 +19,8 @@ Install folium
 ```
 pip install folium
 ```
+
+Install pandas
+```
+pip install pandas
+```
