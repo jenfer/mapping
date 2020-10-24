@@ -1,7 +1,7 @@
 import folium
 import pandas
 
-data = pandas.read_csv("Volcanoes.txt")
+data = pandas.read_csv("resource/Volcanoes.txt")
 nam = list(data["NAME"])
 typ = list(data["TYPE"])
 lat = list(data["LAT"])

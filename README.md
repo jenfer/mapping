@@ -19,10 +19,3 @@ Install folium
 ```
 pip install folium
 ```
-
-Open python shell
-```
->>> import folium
->>> map = folium.Map(location=[37.756648, -122.429375])
->>> map.save("map.html")
-```
