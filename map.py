@@ -17,14 +17,21 @@ Elevation: %s
 
 map = folium.Map(location=[48.7767982, -121.8109970], zoom_start=6, tiles = "Stamen Terrain")
 
-fg = folium.FeatureGroup(name="Volcanoes")
+fgv = folium.FeatureGroup(name="Volcanoes")
 
 for lt, ln, nm, tp, el in zip(lat, lon, nam, typ, ele):
     # marker = f"Name:{nm}\nElevation:{el}"
     iframe = folium.IFrame(html=html % (nm, nm, tp, el), width=200, height=150)
-    fg.add_child(folium.Marker(location=[lt,ln], popup=folium.Popup(iframe), icon=folium.Icon(color="green")))
+    fgv.add_child(folium.Marker(location=[lt,ln], popup=folium.Popup(iframe), icon=folium.Icon(color="green")))
 
-map.add_child(fg)
+fgp = folium.FeatureGroup(name="Population")
+fgp.add_child(folium.GeoJson(data=open("resource/world.json", "r", encoding="utf-8-sig").read(),
+                                   style_function=lambda x : {'fillColor':'green' if x['properties']['POP2005'] < 10000000
+                                                              else 'orange' if 10000000 <= x['properties']['POP2005'] < 20000000
+                                                              else 'red'}))
 
+map.add_child(fgv)
+map.add_child(fgp)
+map.add_child(folium.LayerControl())
 
-map.save("map.html")
+map.save("map_layer_control.html")
